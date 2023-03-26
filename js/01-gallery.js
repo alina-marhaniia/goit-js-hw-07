@@ -39,6 +39,15 @@ function onOpenModal(event) {
 `);
 
   instance.show();
+
+  document.addEventListener('keydown', onModalKeyDown);
+
+  function onModalKeyDown(event) {
+    if (event.code === 'Escape') {
+      instance.close();
+      document.removeEventListener('keydown', onModalKeyDown);
+    }
+  }
 }
 
 console.log(galleryItems);
